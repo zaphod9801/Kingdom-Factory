@@ -44,6 +44,10 @@ class App():
     def __init__(self) -> None:
         self.fh = logging.FileHandler('debug.log')
         self.fh.setLevel(logging.DEBUG)
+        logger.addHandler(self.fh)
+        formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+        self.fh.setFormatter(formatter)
+        logger.addHandler(self.fh)
         self.armada: Army
         self.rey: King
         self.castillo: Castle
@@ -56,16 +60,23 @@ class App():
             r = reino.makeFactory(KingdomType.ELF)
             logger.info('Reino de elfos creado')
             r.create_army()
+            logger.info('Armada de elfos creada')
             r.create_castle()
+            logger.info('Castillo de elfos creado')
             r.create_king()
+            logger.info('Rey de elfos creado')
         elif (tipo == "ORC"):
             r = reino.makeFactory(KingdomType.ORC)
             logger.info('Reino de orcos creado')
             r.create_army()
+            logger.info('Armada de orcos creada')
             r.create_castle()
+            logger.info('Castillo de orcos creado')
             r.create_king()
+            logger.info('Rey de orcos creado')
         else:
             print("Tipo de reino no valido")
+            logger.warning('Tipo de reino invalido')
     
     def getArmy(self) -> str:
         return self.armada.get_description()
