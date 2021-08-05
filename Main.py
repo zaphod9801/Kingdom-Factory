@@ -79,35 +79,45 @@ class App():
             logger.warning('Tipo de reino invalido')
     
     def getArmy(self) -> str:
+        logger.info('Armada principal de la aplicacion solicitada')
         return self.armada.get_description()
     
     def getCastle(self) -> str:
+        logger.info('Castillo principal de la aplicacion solicitado')
         return self.castillo.get_description()
                      
     def getKing(self) -> str:
+        logger.info('Rey principal de la aplicacion solicitado')
         return self.rey.get_description()
         
     def setArmy(self, armada: Army) -> None:
+        logger.info('Armada principal de la aplicacion creada')
         self.armada = armada
         
     def setCastle(self, castillo: Army) -> None:
+        logger.info('Castillo principal de la aplicacion creado')
         self.castillo = castillo
         
     def setKing(self, rey: King) -> None:
+        logger.info('Rey principal de la aplicacion creado')
         self.rey = rey
         
     def getArmy2(self, fabrica: KingdomFactory) -> Army:
+        logger.info('Armada con tipo de fabrica solicitado')
         return fabrica.create_army()
     
     def getCastle2(self, fabrica: KingdomFactory) -> Castle:
+        logger.info('Castillo con tipo de fabrica solicitado')
         return fabrica.create_castle()
     
     def getKing2(self, fabrica: KingdomFactory) -> King:
+        logger.info('Rey con tipo de fabrica solicitado')
         return fabrica.create_king()
     
 if __name__=="__main__":
     print("***Creación de reino inicial***")
     game = App() #intenta crear un reino inicial
+    logger.info('Reino inicial creado')
     print("")
     print("***Creación de reino de prueba para getters y setters***")
     ar = OrcArmy("la armada del bicho") # para el ejemplo de la implementación de lo setters y getters
@@ -116,6 +126,7 @@ if __name__=="__main__":
     game.setArmy(ar)
     game.setCastle(ca)
     game.setKing(re)
+    logger.info('Reino principal de la aplicación creado')
     print(game.getArmy())
     print(game.getCastle())
     print(game.getKing())
